@@ -8,25 +8,25 @@ import { AnimatedBackground } from "@/components/ui/animated-background"
 export function TestimonialsSection() {
   const testimonials = [
     {
-      name: "Алексей Иванов",
-      role: "Frontend-разработчик",
+      name: "Сергей Морозов",
+      role: "Организатор военно-патриотического клуба",
       content:
-        "Эта библиотека сэкономила мне кучу времени на разработку. Компоненты красиво оформлены и легко настраиваются.",
-      avatar: "АИ",
+        "Заказывали шевроны для всего отряда — 80 штук. Сделали за 2 дня, качество отличное. Всё чётко по макету, без вопросов.",
+      avatar: "СМ",
     },
     {
-      name: "Мария Петрова",
-      role: "UI/UX-дизайнер",
+      name: "Анна Белова",
+      role: "Руководитель производственного предприятия",
       content:
-        "Как дизайнер, я ценю внимание к деталям в этих компонентах. Они не только функциональны, но и эстетичны.",
-      avatar: "МП",
+        "Очень довольны нашивками на липучке. Заказали 300 штук, помогли с макетом — получилось именно так, как хотели.",
+      avatar: "АБ",
     },
     {
-      name: "Дмитрий Козлов",
-      role: "Продакт-менеджер",
+      name: "Илья Новиков",
+      role: "Владелец интернет-магазина снаряжения",
       content:
-        "Продуктивность нашей команды значительно выросла с этой библиотекой. Документация отличная, компоненты надежные.",
-      avatar: "ДК",
+        "Работаем постоянно. Берут в приоритет когда горит срок. Стабильное качество, отправляют в тот же день — рекомендую.",
+      avatar: "ИН",
     },
   ]
 
@@ -39,13 +39,13 @@ export function TestimonialsSection() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <AnimatedText
-                text="Отзывы пользователей"
+                text="Что говорят наши клиенты"
                 variant="heading"
                 className="text-3xl font-heading font-bold tracking-tighter sm:text-5xl"
                 animation="slide"
               />
               <AnimatedText
-                text="Узнайте, что говорят разработчики и дизайнеры, использующие нашу библиотеку."
+                text="Работаем с клубами, предприятиями и магазинами по всей России — вот что они о нас говорят."
                 variant="paragraph"
                 className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 opacity-70"
                 animation="fade"

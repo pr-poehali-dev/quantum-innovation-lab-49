@@ -5,22 +5,22 @@ import { ArrowRight } from "lucide-react"
 export function BlogSection() {
   const blogPosts = [
     {
-      title: "Создание современных UI с PixelForge",
-      description: "Узнайте, как создавать красивые интерфейсы с нашей библиотекой компонентов.",
-      date: "15 мая 2023",
+      title: "Как выбрать размер шеврона",
+      description: "Разбираем стандартные размеры, форму и варианты крепления — что подходит для разных задач.",
+      date: "10 марта 2026",
+      readTime: "3 мин",
+    },
+    {
+      title: "Нашивки на липучке vs термонашивки",
+      description: "Сравниваем два способа крепления — где какой уместен и почему липучка чаще выигрывает.",
+      date: "22 февраля 2026",
+      readTime: "4 мин",
+    },
+    {
+      title: "Как подготовить макет для производства",
+      description: "Простой гайд: какие форматы принимаем, что важно указать и почему макет ускоряет заказ.",
+      date: "5 февраля 2026",
       readTime: "5 мин",
-    },
-    {
-      title: "Мощь Tailwind CSS и React",
-      description: "Как Tailwind CSS и React могут преобразить ваш рабочий процесс разработки.",
-      date: "28 апреля 2023",
-      readTime: "7 мин",
-    },
-    {
-      title: "Доступные компоненты",
-      description: "Лучшие практики создания UI-компонентов, доступных для всех пользователей.",
-      date: "10 апреля 2023",
-      readTime: "6 мин",
     },
   ]
 
@@ -30,9 +30,9 @@ export function BlogSection() {
         <ScrollReveal>
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-heading font-bold tracking-tighter sm:text-5xl">Статьи</h2>
+              <h2 className="text-3xl font-heading font-bold tracking-tighter sm:text-5xl">Полезное</h2>
               <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 opacity-70">
-                Будьте в курсе наших новостей, туториалов и лучших практик.
+                Гайды и советы по выбору, оформлению и заказу шевронов и нашивок.
               </p>
             </div>
           </div>
