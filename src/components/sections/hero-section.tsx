@@ -133,13 +133,12 @@ export function HeroSection() {
             >
               <motion.div className="space-y-4" variants={itemVariants}>
                 <h1 className="text-4xl font-heading font-bold tracking-tighter sm:text-5xl xl:text-7xl/none">
-                  <span className="gradient-text">Шевроны и нашивки</span>
+                  <span className="gradient-text">Шевроны с DTF печатью</span>
                   <br />
-                  <span className="text-foreground">на заказ за 1–2 дня</span>
+                  <span className="text-foreground">и вышивкой на заказ</span>
                 </h1>
                 <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400 opacity-70">
-                  Своё производство, помощь с макетом и отправка в тот же день.
-                  Работаем от 10 штук — без задержек и посредников.
+                  Любой принт — DTF печать или вышивка. Своё производство, помощь с макетом и отправка в тот же день. Работаем от 10 штук — без задержек и посредников.
                 </p>
               </motion.div>
 
