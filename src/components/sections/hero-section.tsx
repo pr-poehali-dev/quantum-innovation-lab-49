@@ -1,12 +1,13 @@
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, X } from "lucide-react"
+import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
 
 import { SpotlightCard } from "@/components/ui/spotlight-card"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { MagneticButton } from "@/components/ui/magnetic-button"
 import { AnimatedBackground } from "@/components/ui/animated-background"
 import { GradientButton } from "@/components/ui-library/buttons/gradient-button"
+import { LeadModal } from "@/components/lead-modal"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -26,93 +27,6 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
-}
-
-function SampleModal({ onClose }: { onClose: () => void }) {
-  const [name, setName] = useState("")
-  const [phone, setPhone] = useState("")
-  const [sent, setSent] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!name.trim() || !phone.trim()) return
-    setSent(true)
-  }
-
-  return (
-    <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <motion.div
-        className="relative z-10 w-full max-w-md rounded-2xl border border-red-800/30 bg-gray-950/95 p-8 shadow-2xl"
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 text-gray-500 hover:text-white transition-colors"
-        >
-          <X className="h-5 w-5" />
-        </button>
-
-        {sent ? (
-          <div className="flex flex-col items-center gap-4 py-4 text-center">
-            <span className="text-4xl">✅</span>
-            <h3 className="font-heading text-2xl font-bold text-white">Заявка принята!</h3>
-            <p className="text-gray-400">Мы свяжемся с вами в ближайшее время и уточним детали для образца.</p>
-            <button
-              onClick={onClose}
-              className="mt-2 rounded-xl bg-red-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-red-700 transition-colors"
-            >
-              Закрыть
-            </button>
-          </div>
-        ) : (
-          <>
-            <h3 className="font-heading text-2xl font-bold text-white mb-2">Бесплатный образец</h3>
-            <p className="text-gray-400 text-sm mb-6">Оставьте контакты — пришлём образец и уточним детали заказа.</p>
-
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label className="text-sm text-gray-400">Имя</label>
-                <input
-                  type="text"
-                  placeholder="Ваше имя"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="rounded-xl border border-gray-700 bg-gray-900 px-4 py-3 text-white placeholder-gray-600 outline-none focus:border-red-600 transition-colors"
-                  required
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="text-sm text-gray-400">Телефон</label>
-                <input
-                  type="tel"
-                  placeholder="+7 (___) ___-__-__"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="rounded-xl border border-gray-700 bg-gray-900 px-4 py-3 text-white placeholder-gray-600 outline-none focus:border-red-600 transition-colors"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="mt-2 rounded-xl bg-gradient-to-r from-red-500 to-red-700 px-6 py-3 font-medium text-white hover:opacity-90 transition-opacity"
-              >
-                Получить образец
-              </button>
-            </form>
-          </>
-        )}
-      </motion.div>
-    </motion.div>
-  )
 }
 
 export function HeroSection() {
@@ -220,9 +134,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {modalOpen && <SampleModal onClose={() => setModalOpen(false)} />}
-      </AnimatePresence>
+      <LeadModal open={modalOpen} onClose={() => setModalOpen(false)} title="Заказать бесплатный образец" />
     </section>
   )
 }

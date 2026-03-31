@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
 import { Icons } from "@/components/icons"
 import { useScrollPosition } from "@/hooks/use-scroll-position"
+import { LeadModal } from "@/components/lead-modal"
 
 const navItems = [
   { name: "Главная", href: "#home" },
@@ -20,6 +21,7 @@ const navItems = [
 export function SiteHeader() {
   const scrollPosition = useScrollPosition()
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+  const [modalOpen, setModalOpen] = React.useState(false)
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
@@ -69,17 +71,15 @@ export function SiteHeader() {
             <Button variant="ghost" size="sm" className="neumorphic-button" asChild>
               <a href="#faq">Вопросы</a>
             </Button>
-            <Button size="sm" className="neumorphic-button-primary" asChild>
-              <a href="#pricing">
-                Заказать
-                <motion.div
-                  className="ml-1"
-                  animate={{ x: [0, 3, 0] }}
-                  transition={{ repeat: Infinity, repeatDelay: 3, duration: 0.8 }}
-                >
-                  {'>'}
-                </motion.div>
-              </a>
+            <Button size="sm" className="neumorphic-button-primary" onClick={() => setModalOpen(true)}>
+              Заказать
+              <motion.div
+                className="ml-1"
+                animate={{ x: [0, 3, 0] }}
+                transition={{ repeat: Infinity, repeatDelay: 3, duration: 0.8 }}
+              >
+                {'>'}
+              </motion.div>
             </Button>
           </div>
 
@@ -152,10 +152,8 @@ export function SiteHeader() {
                       Вопросы
                     </a>
                   </Button>
-                  <Button className="w-full neumorphic-button-primary" asChild>
-                    <a href="#pricing" onClick={closeMobileMenu}>
-                      Заказать
-                    </a>
+                  <Button className="w-full neumorphic-button-primary" onClick={() => { closeMobileMenu(); setModalOpen(true) }}>
+                    Заказать
                   </Button>
                 </div>
               </div>
@@ -163,6 +161,8 @@ export function SiteHeader() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <LeadModal open={modalOpen} onClose={() => setModalOpen(false)} title="Оставить заявку" />
     </header>
   )
 }

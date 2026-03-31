@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { ArrowRight } from "lucide-react"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { AnimatedText } from "@/components/ui/animated-text"
@@ -5,8 +6,11 @@ import { motion } from "framer-motion"
 import { AnimatedGradientBorder } from "@/components/ui/animated-gradient-border"
 import { GradientButton } from "@/components/ui-library/buttons/gradient-button"
 import { OutlineButton } from "@/components/ui-library/buttons/button-variants"
+import { LeadModal } from "@/components/lead-modal"
 
 export function CtaSection() {
+  const [modalOpen, setModalOpen] = useState(false)
+
   return (
     <section id="cta" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-red-950/30 to-gray-950/30">
       <div className="container px-6 md:px-8">
@@ -39,9 +43,9 @@ export function CtaSection() {
                 className="px-8 py-3"
                 gradientFrom="from-red-500"
                 gradientTo="to-red-700"
-                asChild
+                onClick={() => setModalOpen(true)}
               >
-                <a href="#pricing" className="flex items-center">
+                <span className="flex items-center">
                   Оставить заявку
                   <motion.span
                     className="ml-2 inline-block"
@@ -50,7 +54,7 @@ export function CtaSection() {
                   >
                     <ArrowRight className="h-4 w-4" />
                   </motion.span>
-                </a>
+                </span>
               </GradientButton>
 
               <AnimatedGradientBorder
@@ -66,6 +70,8 @@ export function CtaSection() {
           </div>
         </ScrollReveal>
       </div>
+
+      <LeadModal open={modalOpen} onClose={() => setModalOpen(false)} title="Оставить заявку" />
     </section>
   )
 }

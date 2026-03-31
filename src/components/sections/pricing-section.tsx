@@ -1,11 +1,21 @@
+import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 import { AnimatedGradientBorder } from "@/components/ui/animated-gradient-border"
 import { motion } from "framer-motion"
+import { LeadModal } from "@/components/lead-modal"
 
 export function PricingSection() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalTitle, setModalTitle] = useState("Оставить заявку")
+
+  const openModal = (title: string) => {
+    setModalTitle(title)
+    setModalOpen(true)
+  }
+
   const plans = [
     {
       name: "Малая партия",
@@ -108,13 +118,21 @@ export function PricingSection() {
                       borderWidth={1}
                       duration={8}
                     >
-                      <Button className="w-full bg-background border-0 text-foreground hover:text-white">
+                      <Button
+                        className="w-full bg-background border-0 text-foreground hover:text-white"
+                        onClick={() => openModal(plan.cta)}
+                      >
                         {plan.cta}
                       </Button>
                     </AnimatedGradientBorder>
                   ) : (
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                      <Button className="w-full neumorphic-button">{plan.cta}</Button>
+                      <Button
+                        className="w-full neumorphic-button"
+                        onClick={() => openModal(plan.cta)}
+                      >
+                        {plan.cta}
+                      </Button>
                     </motion.div>
                   )}
                 </CardContent>
@@ -123,6 +141,8 @@ export function PricingSection() {
           ))}
         </div>
       </div>
+
+      <LeadModal open={modalOpen} onClose={() => setModalOpen(false)} title={modalTitle} />
     </section>
   )
 }
