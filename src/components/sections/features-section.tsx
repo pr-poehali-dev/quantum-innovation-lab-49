@@ -1,4 +1,4 @@
-import { Layers, Zap, Shield, Clock, Package, Sparkles } from "lucide-react"
+import { Layers, Zap, Shield, Clock, Package, Sparkles, Printer, Scissors } from "lucide-react"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollReveal } from "@/components/scroll-reveal"
@@ -51,6 +51,20 @@ export function FeaturesSection() {
       description: "Производим три типа продукции: шевроны, нашивки на липучке и ремувки.",
       progress: 92,
       borderClass: "border-glow-orange",
+    },
+    {
+      icon: <Printer className="h-10 w-10 text-cyan-500" />,
+      title: "DTF печать",
+      description: "Технология DTF — фотографическая точность цветопередачи, любые сложные принты и градиенты. Идеально для ярких и детализированных рисунков.",
+      progress: 97,
+      borderClass: "border-glow-cyan",
+    },
+    {
+      icon: <Scissors className="h-10 w-10 text-pink-500" />,
+      title: "Вышивка",
+      description: "Классическая машинная вышивка — объёмный и износостойкий принт. Выглядит дорого и держится годами. Отлично подходит для форменной одежды.",
+      progress: 95,
+      borderClass: "border-glow-pink",
     },
   ]
 
